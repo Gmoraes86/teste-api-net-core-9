@@ -1,0 +1,6 @@
+@ResaleAPI_HostAddress = http://localhost:5276
+
+@ResaleAPI_Url = @ResaleAPI_HostAddress/api/Resale
+Accept: application/json
+
+###
