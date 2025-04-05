@@ -1,6 +1,0 @@
-@PrincipalAPI_HostAddress = http://localhost:5293
-
-@PrincipalAPI_Url = @PrincipalAPI_HostAddress/api/Principal
-Accept: application/json
-
-###

@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using PrincipalAPI.Infrastructure;
+using MainAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddApplicationServices(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
 builder.Services.AddOpenApi();
 
