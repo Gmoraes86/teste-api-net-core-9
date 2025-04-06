@@ -12,6 +12,7 @@ public static class DependencyInjection
             options.UseSqlServer(connectionString));
 
         services.AddCustomerServices();
+        services.AddProductServices();
         return services;
     }
 }

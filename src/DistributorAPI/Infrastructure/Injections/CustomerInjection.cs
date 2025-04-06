@@ -10,6 +10,7 @@ public static class CustomerInjection
     public static IServiceCollection AddCustomerServices(this IServiceCollection services)
     {
         services.AddScoped<RegisterCustomerValidationFilter>();
+        services.AddScoped<UpdateCustomerValidationFilter>();
 
         // Registrar repositórios relacionados a Customer
         services.AddScoped<ICustomerRepository, CustomerRepository>();

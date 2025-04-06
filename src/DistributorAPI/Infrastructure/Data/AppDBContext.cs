@@ -9,6 +9,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Contact> Contacts { get; set; }
     public DbSet<Address> Addresses { get; set; }
+    public DbSet<Product> Products { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
