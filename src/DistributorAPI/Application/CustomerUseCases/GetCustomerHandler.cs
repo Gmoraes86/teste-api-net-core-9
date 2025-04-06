@@ -15,8 +15,8 @@ public class GetCustomerHandler(ICustomerRepository customerRepository)
         return await customerRepository.GetByIdAsync(id);
     }
 
-    public async Task<Customer?> GetByCnpjAsync(string cnpj)
+    public async Task<Customer?> GetByCnpjAsync(string document)
     {
-        return await customerRepository.GetByCnpjAsync(cnpj);
+        return await customerRepository.GetByDocumentAsync(document);
     }
 }

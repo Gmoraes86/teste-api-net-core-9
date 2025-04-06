@@ -14,12 +14,12 @@ public class CustomerRepository(AppDbContext context) : ICustomerRepository
         return customer;
     }
 
-    public async Task<Customer?> GetByCnpjAsync(string cnpj)
+    public async Task<Customer?> GetByDocumentAsync(string document) // Renomeado de GetByCnpjAsync para GetByDocumentAsync
     {
         return await context.Customers
             .Include(d => d.Contacts)
             .Include(d => d.Addresses)
-            .FirstOrDefaultAsync(d => d.Cnpj == cnpj);
+            .FirstOrDefaultAsync(d => d.Document == document); // Renomeado de Cnpj para Document
     }
 
     public async Task<List<Customer>> GetAllAsync()

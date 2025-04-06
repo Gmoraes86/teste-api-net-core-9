@@ -16,29 +16,30 @@ public class RegisterCustomerValidationFilter : IActionFilter
             return;
         }
 
-        // Validações do CNPJ
-        if (string.IsNullOrWhiteSpace(dto.Cnpj))
+        // Validações do Document
+        if (string.IsNullOrWhiteSpace(dto.Document)) // Renomeado de Cnpj para Document
         {
-            context.Result = new BadRequestObjectResult(new { message = "CNPJ is required." });
+            context.Result = new BadRequestObjectResult(new { message = "Document is required." });
             return;
         }
 
-        if (!CnpjUtils.IsValid(dto.Cnpj)) context.Result = new BadRequestObjectResult("Invalid CNPJ.");
+        if (!CnpjUtils.IsValid(dto.Document)) // Renomeado de Cnpj para Document
+            context.Result = new BadRequestObjectResult("Invalid Document.");
 
-        if (dto.Cnpj.Length != 14 || !dto.Cnpj.All(char.IsDigit))
+        if (dto.Document.Length != 14 || !dto.Document.All(char.IsDigit)) // Renomeado de Cnpj para Document
         {
-            context.Result = new BadRequestObjectResult(new { message = "CNPJ must be 14 numeric characters." });
+            context.Result = new BadRequestObjectResult(new { message = "Document must be 14 numeric characters." });
             return;
         }
 
-        // Validações do CorporateName
-        if (string.IsNullOrWhiteSpace(dto.CorporateName))
+        // Validações do FullName
+        if (string.IsNullOrWhiteSpace(dto.FullName))
         {
             context.Result = new BadRequestObjectResult(new { message = "Corporate Name is required." });
             return;
         }
 
-        switch (dto.CorporateName.Length)
+        switch (dto.FullName.Length)
         {
             case < 5:
                 context.Result =

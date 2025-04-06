@@ -11,7 +11,7 @@ public class UpdateCustomerHandler(ICustomerRepository customerRepository)
         if (existingCustomer == null)
             throw new InvalidOperationException("Customer not found.");
 
-        existingCustomer.CorporateName = customer.CorporateName;
+        existingCustomer.FullName = customer.FullName;
         existingCustomer.TradeName = customer.TradeName;
         existingCustomer.Email = customer.Email;
         existingCustomer.Phone = customer.Phone;

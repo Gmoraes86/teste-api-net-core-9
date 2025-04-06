@@ -16,14 +16,14 @@ public class UpdateCustomerValidationFilter : IActionFilter
             return;
         }
 
-        // Validações do CorporateName
-        if (string.IsNullOrWhiteSpace(dto.CorporateName))
+        // Validações do FullName
+        if (string.IsNullOrWhiteSpace(dto.FullName))
         {
             context.Result = new BadRequestObjectResult(new { message = "Corporate Name is required." });
             return;
         }
 
-        switch (dto.CorporateName.Length)
+        switch (dto.FullName.Length)
         {
             case < 5:
                 context.Result =

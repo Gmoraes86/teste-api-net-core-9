@@ -9,44 +9,45 @@ public class CustomerMapper
     {
         return new Customer
         {
-            Cnpj = dto.Cnpj,
-            CorporateName = dto.CorporateName,
+            Document = dto.Document,
+            FullName = dto.FullName,
             TradeName = dto.TradeName,
             Email = dto.Email,
             Phone = dto.Phone,
             Contacts = dto.Contacts.Select(name => new Contact { Name = name }).ToList(),
-            Addresses = dto.Addresses.Select(address => new Address { Addressinfo = address }).ToList()
+            Addresses = dto.Addresses.Select(address => new Address { Addressinfo = address }).ToList(),
+            CustomerType = dto.CustomerType
         };
     }
 
-    // Converter UpdateCustomerDTO para Customer
     public static Customer ToEntity(UpdateCustomerDto dto, Guid id)
     {
         return new Customer
         {
             Id = id,
-            CorporateName = dto.CorporateName,
+            FullName = dto.FullName,
             TradeName = dto.TradeName,
             Email = dto.Email,
             Phone = dto.Phone,
             Contacts = dto.Contacts.Select(name => new Contact { Name = name }).ToList(),
-            Addresses = dto.Addresses.Select(address => new Address { Addressinfo = address }).ToList()
+            Addresses = dto.Addresses.Select(address => new Address { Addressinfo = address }).ToList(),
+            CustomerType = dto.CustomerType
         };
     }
 
-    // Converter Customer para CustomerDTO
     public static CustomerDto ToDto(Customer entity)
     {
         return new CustomerDto
         {
             Id = entity.Id,
-            Cnpj = entity.Cnpj,
-            CorporateName = entity.CorporateName,
+            Document = entity.Document,
+            FullName = entity.FullName,
             TradeName = entity.TradeName,
             Email = entity.Email,
             Phone = entity.Phone,
             ContactNames = entity.Contacts.Select(cn => cn.Name).ToList(),
-            DeliveryAddresses = entity.Addresses.Select(da => da.Addressinfo).ToList()
+            DeliveryAddresses = entity.Addresses.Select(da => da.Addressinfo).ToList(),
+            CustomerType = entity.CustomerType
         };
     }
 

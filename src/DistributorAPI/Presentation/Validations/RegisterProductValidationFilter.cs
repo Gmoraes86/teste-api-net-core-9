@@ -14,9 +14,9 @@ public class RegisterProductValidationFilter : IActionFilter
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(dto.Name))
+        if (string.IsNullOrWhiteSpace(dto.Sku))
         {
-            context.Result = new BadRequestObjectResult(new { message = "Product name is required." });
+            context.Result = new BadRequestObjectResult(new { message = "Product sku is required." });
             return;
         }
 
@@ -25,13 +25,6 @@ public class RegisterProductValidationFilter : IActionFilter
             context.Result = new BadRequestObjectResult(new { message = "Price must be greater than zero." });
             return;
         }
-
-        if (dto.Stock < 0)
-        {
-            context.Result = new BadRequestObjectResult(new { message = "Stock cannot be negative." });
-            return;
-        }
-
     }
 
     public void OnActionExecuted(ActionExecutedContext context)

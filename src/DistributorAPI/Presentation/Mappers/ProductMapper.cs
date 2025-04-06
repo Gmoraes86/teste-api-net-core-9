@@ -8,18 +8,17 @@ public static class ProductMapper
     public static Product ToEntity(ProductDto dto) =>
         new()
         {
-            Name = dto.Name,
+            Sku = dto.Sku,
             Description = dto.Description,
-            Price = dto.Price
-            // Removed Stock mapping
+            Price = dto.Price            
         };
 
     public static ProductDto ToDto(Product entity) =>
         new()
         {
-            Name = entity.Name,
+            Id = entity.Id, // Added Id mapping
+            Sku = entity.Sku,
             Description = entity.Description,
-            Price = entity.Price
-            // Removed Stock mapping
+            Price = entity.Price            
         };
 }

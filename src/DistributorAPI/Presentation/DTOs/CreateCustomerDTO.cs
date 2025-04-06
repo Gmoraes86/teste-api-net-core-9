@@ -1,21 +1,23 @@
-﻿using DistributorAPI.Helpers;
+﻿using DistributorAPI.Domain.Entities;
+using DistributorAPI.Helpers;
 
 namespace DistributorAPI.Presentation.DTOs;
 
 public class CreateCustomerDto
 {
-    private string _cnpj = string.Empty;
+    private string _document = string.Empty;
 
-    public string Cnpj
+    public string Document
     {
-        get => _cnpj;
-        set => _cnpj = StringUtils.RemoveFormatting(value);
+        get => _document; // Renomeado de Cnpj para Document
+        set => _document = StringUtils.RemoveFormatting(value);
     }
 
-    public string CorporateName { get; set; } = string.Empty;
+    public string FullName { get; set; } = string.Empty;
     public string TradeName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
     public List<string> Contacts { get; set; } = [];
     public List<string> Addresses { get; set; } = [];
+    public CustomerType CustomerType { get; set; } = CustomerType.Corporate; // Default to Corporate
 }

@@ -13,6 +13,8 @@ public static class DependencyInjection
 
         services.AddCustomerServices();
         services.AddProductServices();
+        services.AddOrderServices();
+        
         return services;
     }
 }

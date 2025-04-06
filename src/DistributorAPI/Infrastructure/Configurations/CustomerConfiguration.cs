@@ -10,19 +10,21 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
         builder.ToTable("Customer");
         builder.HasKey(d => d.Id);
-        builder.Property(d => d.Cnpj)
+        builder.Property(d => d.Document) // Renomeado de Cnpj para Document
             .IsRequired()
             .HasMaxLength(14);
-        builder.Property(d => d.CorporateName)
+        builder.Property(d => d.FullName) // Renomeado de CorporateName para FullName
             .IsRequired()
             .HasMaxLength(255);
         builder.Property(d => d.TradeName)
-            .IsRequired()
-            .HasMaxLength(255);
+            .HasMaxLength(255); // Tornado opcional
         builder.Property(d => d.Email)
             .IsRequired()
             .HasMaxLength(100);
         builder.Property(d => d.Phone)
             .HasMaxLength(20);
+        builder.Property(d => d.CustomerType)
+            .IsRequired()
+            .HasConversion<string>(); // Store as string in the database
     }
 }
