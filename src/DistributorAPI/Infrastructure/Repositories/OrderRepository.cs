@@ -45,6 +45,14 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
             .ToListAsync();
     }
 
+    public async Task<List<Order>> GetAllAsync()
+    {
+        return await context.Orders
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .ToListAsync();
+    }
+
     public async Task<Order?> GetByIdAsync(Guid id, bool includeCustomer = false)
     {
         var query = context.Orders.AsQueryable();
@@ -76,10 +84,27 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
             .FirstOrDefaultAsync(o => o.Id == id);
     }
 
+    public async Task<Order?> GetByIdAsync(Guid id)
+    {
+        return await context.Orders
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .FirstOrDefaultAsync(o => o.Id == id);
+    }
+
     public async Task<Order> UpdateAsync(Order order)
     {
         context.Orders.Update(order);
         await context.SaveChangesAsync();
         return order;
+    }
+
+    public async Task<List<Order>> GetPendingOrdersAsync()
+    {
+        return await context.Orders
+            .Where(o => o.Status == OrderStatus.Pending)
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .ToListAsync();
     }
 }
