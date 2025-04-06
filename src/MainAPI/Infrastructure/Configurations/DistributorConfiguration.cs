@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MainAPI.Infrastructure.Configurations;
 
-public class DistributorConfiguration: IEntityTypeConfiguration<Distributor>
+public class DistributorConfiguration : IEntityTypeConfiguration<Distributor>
 {
     public void Configure(EntityTypeBuilder<Distributor> builder)
     {
-        builder.ToTable("Distributor"); 
-        builder.HasKey(d => d.Id); 
+        builder.ToTable("Distributor");
+        builder.HasKey(d => d.Id);
         builder.Property(d => d.Cnpj)
             .IsRequired()
-            .HasMaxLength(14); 
+            .HasMaxLength(14);
         builder.Property(d => d.CorporateName)
             .IsRequired()
             .HasMaxLength(255);
@@ -23,6 +23,6 @@ public class DistributorConfiguration: IEntityTypeConfiguration<Distributor>
             .IsRequired()
             .HasMaxLength(100);
         builder.Property(d => d.Phone)
-            .HasMaxLength(20); 
+            .HasMaxLength(20);
     }
 }

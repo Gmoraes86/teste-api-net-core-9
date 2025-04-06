@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using MainAPI.Infrastructure;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddResponseCompression(options =>
-{
-    options.EnableForHttps = true; 
-});
+builder.Services.AddResponseCompression(options => { options.EnableForHttps = true; });
 
 builder.Services.AddCors(options =>
 {
@@ -28,18 +25,17 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.UseResponseCaching(); 
+app.UseResponseCaching();
 app.UseCors("AllowSpecificOrigins");
-
 
 
 app.Use(async (context, next) =>
 {
     context.Response.GetTypedHeaders().CacheControl =
-        new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+        new CacheControlHeaderValue
         {
             Public = true,
-            MaxAge = TimeSpan.FromSeconds(60) 
+            MaxAge = TimeSpan.FromSeconds(60)
         };
     await next();
 });
@@ -48,7 +44,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-} 
+}
 
 app.MapHealthChecks("/health");
 app.UseResponseCompression();

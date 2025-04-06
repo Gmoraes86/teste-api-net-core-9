@@ -5,7 +5,7 @@ namespace MainAPI.Helpers;
 public class EmailUtils
 {
     /// <summary>
-    /// Valida se o e-mail é válido.
+    ///     Valida se o e-mail é válido.
     /// </summary>
     /// <param name="email">O e-mail a ser validado.</param>
     /// <returns>True se o e-mail for válido, caso contrário False.</returns>

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MainAPI.Presentation.Controllers;
 
-
 [ApiController]
 [Route("api/[controller]")]
 public class DistributorController(
@@ -23,10 +22,10 @@ public class DistributorController(
         try
         {
             var distributor = DistributorMapper.ToEntity(dto);
-            
+
             var result = await registerDistributorHandler.Handle(distributor);
             var response = DistributorMapper.ToDto(result);
-            
+
             return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
         catch (InvalidOperationException ex)
@@ -34,34 +33,28 @@ public class DistributorController(
             return BadRequest(new { message = ex.Message });
         }
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var distributors = await getDistributorHandler.GetAllAsync();
-        if (distributors.Count == 0)
-        {
-            return NotFound(new { message = "Distributors not found." });
-        }
+        if (distributors.Count == 0) return NotFound(new { message = "Distributors not found." });
         var response = DistributorMapper.ToDtoList(distributors);
-        
+
         return Ok(response);
     }
-    
+
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult>? GetById(Guid id)
     {
         var distributor = await getDistributorHandler.GetByIdAsync(id);
-        
-        if (distributor == null)
-        {
-            return NotFound(new { message = "Distributor not found." });
-        }
-        
+
+        if (distributor == null) return NotFound(new { message = "Distributor not found." });
+
         var response = DistributorMapper.ToDto(distributor);
         return Ok(response);
     }
-    
+
     [HttpPut("{id:Guid}")]
     [ServiceFilter(typeof(UpdateDistributorValidationFilter))]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateDistributorDto dto)
@@ -78,7 +71,7 @@ public class DistributorController(
             return NotFound(new { message = ex.Message });
         }
     }
-    
+
     [HttpDelete("{id:Guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {

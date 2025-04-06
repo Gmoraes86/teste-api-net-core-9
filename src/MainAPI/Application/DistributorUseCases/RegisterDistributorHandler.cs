@@ -10,7 +10,7 @@ public class RegisterDistributorHandler(IDistributorRepository distributorReposi
         var existingDistributor = await distributorRepository.GetByCnpjAsync(distributor.Cnpj);
         if (existingDistributor != null)
             throw new InvalidOperationException("A distributor with this CNPJ already exists.");
-        
+
         return await distributorRepository.AddAsync(distributor);
     }
 }

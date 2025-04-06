@@ -21,7 +21,7 @@ public class DistributorRepository(AppDbContext context) : IDistributorRepositor
             .Include(d => d.Addresses)
             .FirstOrDefaultAsync(d => d.Cnpj == cnpj);
     }
-    
+
     public async Task<List<Distributor>> GetAllAsync()
     {
         return await context.Distributors

@@ -14,7 +14,7 @@ public class GetDistributorHandler(IDistributorRepository distributorRepository)
     {
         return await distributorRepository.GetByIdAsync(id);
     }
-    
+
     public async Task<Distributor?> GetByCnpjAsync(string cnpj)
     {
         return await distributorRepository.GetByCnpjAsync(cnpj);

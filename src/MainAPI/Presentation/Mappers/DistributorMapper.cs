@@ -49,7 +49,7 @@ public class DistributorMapper
             DeliveryAddresses = entity.Addresses.Select(da => da.Addressinfo).ToList()
         };
     }
-    
+
     public static List<DistributorDto> ToDtoList(IEnumerable<Distributor> entities)
     {
         return entities.Select(ToDto).ToList();

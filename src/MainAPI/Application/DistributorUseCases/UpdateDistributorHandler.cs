@@ -10,7 +10,7 @@ public class UpdateDistributorHandler(IDistributorRepository distributorReposito
         var existingDistributor = await distributorRepository.GetByIdAsync(distributor.Id);
         if (existingDistributor == null)
             throw new InvalidOperationException("Distributor not found.");
-        
+
         existingDistributor.CorporateName = distributor.CorporateName;
         existingDistributor.TradeName = distributor.TradeName;
         existingDistributor.Email = distributor.Email;

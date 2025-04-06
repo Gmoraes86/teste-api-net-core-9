@@ -3,7 +3,7 @@
 public static class StringUtils
 {
     /// <summary>
-    /// Remove todos os caracteres não numéricos de uma string.
+    ///     Remove todos os caracteres não numéricos de uma string.
     /// </summary>
     /// <param name="value">A string a ser processada.</param>
     /// <returns>Uma string contendo apenas números.</returns>

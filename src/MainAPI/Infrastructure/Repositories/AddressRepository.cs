@@ -26,5 +26,5 @@ public class AddressRepository : IAddressRepository
         return await _context.Addresses
             .Where(da => da.DistributorId == distributorId)
             .ToListAsync();
-    }  
+    }
 }

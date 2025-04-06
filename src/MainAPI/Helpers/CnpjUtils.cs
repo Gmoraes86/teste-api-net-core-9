@@ -3,7 +3,7 @@
 public class CnpjUtils
 {
     /// <summary>
-    /// Valida se o CNPJ é válido.
+    ///     Valida se o CNPJ é válido.
     /// </summary>
     /// <param name="cnpj">O CNPJ a ser validado.</param>
     /// <returns>True se o CNPJ for válido, caso contrário False.</returns>
@@ -40,17 +40,14 @@ public class CnpjUtils
 
     private static int CalculateVerifierDigit(string cnpjBase)
     {
-        int[] weights = cnpjBase.Length == 12
-            ? new int[] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 }
-            : new int[] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+        var weights = cnpjBase.Length == 12
+            ? new[] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 }
+            : new[] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
 
-        int sum = 0;
-        for (int i = 0; i < cnpjBase.Length; i++)
-        {
-            sum += (cnpjBase[i] - '0') * weights[i];
-        }
+        var sum = 0;
+        for (var i = 0; i < cnpjBase.Length; i++) sum += (cnpjBase[i] - '0') * weights[i];
 
-        int remainder = sum % 11;
+        var remainder = sum % 11;
         return remainder < 2 ? 0 : 11 - remainder;
     }
 }

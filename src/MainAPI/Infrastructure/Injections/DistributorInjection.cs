@@ -1,5 +1,4 @@
-﻿using MainAPI.Application;
-using MainAPI.Application.DistributorUseCases;
+﻿using MainAPI.Application.DistributorUseCases;
 using MainAPI.Domain.Interfaces;
 using MainAPI.Infrastructure.Repositories;
 using MainAPI.Presentation.Validations;
@@ -11,7 +10,7 @@ public static class DistributorInjection
     public static IServiceCollection AddDistributorServices(this IServiceCollection services)
     {
         services.AddScoped<RegisterDistributorValidationFilter>();
-        
+
         // Registrar repositórios relacionados a Distributor
         services.AddScoped<IDistributorRepository, DistributorRepository>();
         services.AddScoped<IContactRepository, ContactRepository>();
