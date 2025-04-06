@@ -2,8 +2,8 @@
 
 public class Contact
 {
-    public int Guid { get; set; }
+    public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public int DistributorId { get; set; }
+    public Guid DistributorId { get; set; }
     public Distributor Distributor { get; set; } = null!;
 }

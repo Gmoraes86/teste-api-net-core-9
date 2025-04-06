@@ -1,5 +1,6 @@
 ﻿using MainAPI.Domain.Entities;
 using MainAPI.Domain.Interfaces;
+using MainAPI.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace MainAPI.Infrastructure.Repositories;
@@ -20,7 +21,7 @@ public class AddressRepository : IAddressRepository
         return address;
     }
 
-    public async Task<List<Address>> GetByDistributorIdAsync(int distributorId)
+    public async Task<List<Address>> GetByDistributorIdAsync(Guid distributorId)
     {
         return await _context.Addresses
             .Where(da => da.DistributorId == distributorId)

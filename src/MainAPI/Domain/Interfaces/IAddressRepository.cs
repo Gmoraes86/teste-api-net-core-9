@@ -5,5 +5,5 @@ namespace MainAPI.Domain.Interfaces;
 public interface IAddressRepository
 {
     Task<Address> AddAsync(Address address);
-    Task<List<Address>> GetByDistributorIdAsync(int distributorId);
+    Task<List<Address>> GetByDistributorIdAsync(Guid distributorId);
 }

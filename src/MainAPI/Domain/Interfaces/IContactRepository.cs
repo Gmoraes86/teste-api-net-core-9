@@ -5,5 +5,5 @@ namespace MainAPI.Domain.Interfaces;
 public interface IContactRepository
 {
     Task<Contact> AddAsync(Contact contactName);
-    Task<List<Contact>> GetByDistributorIdAsync(int distributorId);
+    Task<List<Contact>> GetByDistributorIdAsync(Guid distributorId);
 }

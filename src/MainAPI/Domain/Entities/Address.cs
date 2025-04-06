@@ -2,9 +2,9 @@
 
 public class Address
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Addressinfo { get; set; } = string.Empty;
     public bool isMain { get; set; }
-    public int DistributorId { get; set; }
+    public Guid DistributorId { get; set; }
     public Distributor Distributor { get; set; } = null!;
 }
